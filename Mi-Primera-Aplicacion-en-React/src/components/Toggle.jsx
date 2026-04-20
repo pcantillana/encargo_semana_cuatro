@@ -1,4 +1,4 @@
-// Importamos los estilos específicos del componente Toggle
+// Se importan los estilos específicos del componente Toggle
 import "./Toggle.css";
 
 /**

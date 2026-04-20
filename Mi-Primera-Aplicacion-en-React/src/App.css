@@ -1,41 +1,13 @@
-/* =========================================
-   App.css - ESTRUCTURA PRINCIPAL DE LA APP
-   ========================================= */
+/* App.css - Estilos del contenedor principal */
 
-/* Contenedor principal: ocupa toda la pantalla y centra el contenido */
 .App {
   width: 100%;
-  min-height: 100vh; /* min-height evita cortes en pantallas pequeñas o al agregar más contenido */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Los colores vienen automáticamente de las variables CSS definidas en index.css */
   background-color: var(--background-color);
   transition: background-color 0.25s ease-in-out;
   padding: 2rem 1rem;
-}
-
-/* Estilos para el título principal */
-.title {
-  color: var(--primary-text-color);
-  margin-bottom: 50px;
-  font-size: 2.5rem;
-  text-align: center;
-}
-
-/* Estilos para la caja informativa */
-.box {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: var(--foreground-color);
-  color: var(--secondary-text-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra sutil para profundidad */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Efecto hover opcional para la caja */
-.box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }

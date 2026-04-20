@@ -21,7 +21,7 @@
   --secondary-text-color: #ffffff;
   --toggle-bg: #f0eb9d;
   --toggle-fg: #ffd000;
-  --focus-color: #4d90fe; /* Color para accesibilidad al navegar con teclado */
+  --focus-color: #4d90fe;
 }
 
 /* 
@@ -38,7 +38,7 @@
 }
 
 /* 
-  Se aplica las variables al <body> para que todo el documento herede los colores.
+  Aplicamos las variables al <body> para que todo el documento herede los colores.
   La transición suaviza el cambio entre temas.
 */
 body {

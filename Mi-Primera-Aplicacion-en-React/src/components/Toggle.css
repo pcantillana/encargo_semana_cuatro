@@ -4,10 +4,10 @@
 
 /* Contenedor: posiciona el toggle en la esquina superior derecha */
 .toggle-container {
-  position: fixed; /* 'fixed' asegura que siga visible al hacer scroll */
+  position: fixed;
   top: 2em;
   right: 2em;
-  z-index: 100; /* Garantiza que quede por encima de otros elementos */
+  z-index: 100;
 }
 
 /* 
@@ -31,7 +31,7 @@
   font-weight: 600;
   cursor: pointer;
   color: var(--primary-text-color);
-  user-select: none; /* Evita seleccionar el texto al hacer clic rápido */
+  user-select: none;
 }
 
 .toggle + label::before {
@@ -52,7 +52,7 @@
   content: "";
   height: 0.8em;
   width: 0.8em;
-  border-radius: 50%; /* Forma circular */
+  border-radius: 50%;
   background-color: var(--toggle-fg);
   position: absolute;
   left: 0.2em;

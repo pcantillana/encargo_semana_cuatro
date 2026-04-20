@@ -1,8 +1,10 @@
-// Se importa los hooks de React necesarios para manejar estado y efectos secundarios
+// Se importan los hooks de React necesarios para manejar estado y efectos secundarios
 import { useState, useEffect } from "react";
-// Se importa el componente Toggle y sus estilos
+// Se importa el componente Toggle para el cambio de tema
 import { Toggle } from "./components/Toggle";
-// Se importa los estilos específicos de esta vista
+// Se importa el componente TodoList para la lista de tareas
+import { TodoList } from "./components/TodoList";
+// Se importan los estilos específicos de esta vista
 import "./App.css";
 
 /**
@@ -12,7 +14,7 @@ import "./App.css";
  * - Aplica el tema globalmente al documento HTML
  */
 export const App = () => {
-  // 1. INICIALIZACIÓN DEL ESTADO
+  // 1. INICIALIZACIÓN DEL ESTADO DEL TEMA
   // useState acepta una función para calcular el valor inicial solo una vez (al montar)
   const [isDark, setIsDark] = useState(() => {
     // Se busca si el usuario ya guardó una preferencia anteriormente
@@ -25,7 +27,7 @@ export const App = () => {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
-  // 2. EFECTO SECUNDARIO (useEffect)
+  // 2. EFECTO SECUNDARIO (useEffect) PARA APLICAR EL TEMA
   // Se ejecuta cada vez que 'isDark' cambia
   useEffect(() => {
     // Aplicamos el atributo data-theme a la etiqueta <html> del documento
@@ -34,22 +36,19 @@ export const App = () => {
     
     // Guardamos la preferencia en localStorage para que persista al recargar la página
     localStorage.setItem("theme", isDark ? "dark" : "light");
-  }, [isDark]); // El array de dependencias indica cuándo debe ejecutarse este efecto
+  }, [isDark]);
 
   // 3. RENDERIZADO DE LA INTERFAZ
   return (
     <div className="App">
-      {/* Componente Toggle: recibe el estado actual y la función para cambiarlo */}
+      {/* Toggle para cambiar entre modo claro y oscuro */}
       <Toggle 
         isChecked={isDark}
-        handleChange={() => setIsDark((prev) => !prev)} // Usamos función previa por buenas prácticas de React
+        handleChange={() => setIsDark((prev) => !prev)}
       />
       
-      <h1 className="title">Hola Mundo!!</h1>
-      
-      <div className="box">
-        <h2>Esto es una caja</h2>
-      </div>
+      {/* Componente de lista de tareas */}
+      <TodoList />
     </div>
   );
 };

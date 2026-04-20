@@ -1,0 +1,157 @@
+/* =========================================
+   TodoList.css - Estilos de la lista de tareas
+   ========================================= */
+
+.todo-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--foreground-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.25s ease-in-out;
+}
+
+.todo-title {
+  color: var(--secondary-text-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Grupo de input + botón */
+.todo-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  transition: border-color 0.2s ease;
+}
+
+/* FIX: Reemplazamos outline amarillo por un borde suave */
+.todo-input:focus {
+  outline: none;
+  border-color: var(--toggle-fg);
+  box-shadow: 0 0 0 3px rgba(255, 208, 0, 0.2);
+}
+
+.todo-add-btn {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--toggle-fg);
+  color: var(--background-color);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.todo-add-btn:hover {
+  filter: brightness(1.1);
+}
+
+.todo-add-btn:active {
+  transform: scale(0.98);
+}
+
+/* FIX: Eliminar outline amarillo en botones también */
+.todo-add-btn:focus,
+.todo-delete-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 208, 0, 0.2);
+}
+
+/* Lista de tareas */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--background-color);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  color: var(--primary-text-color);
+  /* FIX: Eliminamos transform en hover para evitar el "temblor" */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* FIX: Hover suave sin movimiento */
+.todo-item:hover {
+  background-color: var(--toggle-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para tareas completadas: tachado y opacidad */
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.todo-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+.todo-delete-btn {
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.todo-delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Mensaje cuando no hay tareas */
+.todo-empty {
+  text-align: center;
+  color: var(--secondary-text-color);
+  opacity: 0.8;
+  padding: 1rem;
+  font-style: italic;
+}
+
+/* Contador de tareas */
+.todo-counter {
+  text-align: center;
+  color: var(--secondary-text-color);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Scroll personalizado para la lista */
+.todo-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background-color: var(--toggle-fg);
+  border-radius: 3px;
+}
