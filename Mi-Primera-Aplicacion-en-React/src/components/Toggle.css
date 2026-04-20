@@ -1,20 +1,37 @@
+/* =========================================
+   Toggle.css - ESTILOS DEL INTERRUPTOR
+   ========================================= */
 
+/* Contenedor: posiciona el toggle en la esquina superior derecha */
 .toggle-container {
-  position: absolute;
+  position: fixed; /* 'fixed' asegura que siga visible al hacer scroll */
   top: 2em;
   right: 2em;
+  z-index: 100; /* Garantiza que quede por encima de otros elementos */
 }
 
+/* 
+  Ocultamos el input nativo visualmente, pero lo mantenemos en el DOM.
+  Esto permite que siga siendo accesible y funcione con teclado.
+*/
 .toggle {
   visibility: hidden;
+  position: absolute;
+  opacity: 0;
 }
 
+/* 
+  Label + Track (fondo del interruptor)
+  ::before crea la píldora de fondo. Usa variables CSS para el color.
+*/
 .toggle + label {
   display: flex;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  font-weight: 600;
   cursor: pointer;
   color: var(--primary-text-color);
+  user-select: none; /* Evita seleccionar el texto al hacer clic rápido */
 }
 
 .toggle + label::before {
@@ -27,17 +44,37 @@
   transition: background-color 250ms ease-in-out;
 }
 
+/* 
+  ::after crea el "knob" o bola móvil del interruptor.
+  Se posiciona absolutamente respecto al label.
+*/
 .toggle + label::after {
   content: "";
   height: 0.8em;
   width: 0.8em;
-  border-radius: 1em;
+  border-radius: 50%; /* Forma circular */
   background-color: var(--toggle-fg);
   position: absolute;
   left: 0.2em;
   transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
+/* Estado ACTIVO: mueve la bola hacia la derecha cuando el checkbox está marcado */
 .toggle:checked + label::after {
-  transform: translateX(100%);
+  transform: translateX(1em);
+}
+
+/* =========================================
+   ACCESIBILIDAD Y EXPERIENCIA DE USUARIO
+   ========================================= */
+
+/* Muestra un contorno visible cuando el usuario navega con Tab (teclado) */
+.toggle:focus-visible + label::before {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Efecto hover suave: ilumina ligeramente el track al pasar el mouse */
+.toggle + label:hover::before {
+  filter: brightness(1.1);
 }

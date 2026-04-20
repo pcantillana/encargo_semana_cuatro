@@ -1,4 +1,8 @@
-/*Se definen margenes*/
+/* =========================================
+   index.css - ESTILOS GLOBALES Y VARIABLES
+   ========================================= */
+
+/* Reset básico: elimina márgenes/paddings por defecto y unifica el modelo de caja */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +10,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*Se definen colores a usar*/
+/* 
+  :root → Variables CSS para el tema CLARO (por defecto).
+  Al estar en :root, están disponibles en TODA la aplicación.
+*/
 :root {
   --background-color: #f6f6f6;
   --foreground-color: #003cff;
@@ -14,8 +21,13 @@
   --secondary-text-color: #ffffff;
   --toggle-bg: #f0eb9d;
   --toggle-fg: #ffd000;
+  --focus-color: #4d90fe; /* Color para accesibilidad al navegar con teclado */
 }
 
+/* 
+  [data-theme="dark"] → Reasigna las variables cuando el tema es OSCURO.
+  React cambiará este atributo en <html>, activando automáticamente estos valores.
+*/
 [data-theme="dark"] {
   --background-color: #0a0a0a;
   --foreground-color: #567aff;
@@ -23,4 +35,14 @@
   --secondary-text-color: #0a0a0a;
   --toggle-bg: #283452;
   --toggle-fg: #00a6ff;
+}
+
+/* 
+  Se aplica las variables al <body> para que todo el documento herede los colores.
+  La transición suaviza el cambio entre temas.
+*/
+body {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
